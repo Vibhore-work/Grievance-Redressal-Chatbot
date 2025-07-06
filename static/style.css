@@ -1,0 +1,650 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  /* Header */
+  header {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #000000;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #ffffff;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s;
+  }
+  
+  .nav-links a:hover {
+    opacity: 0.8;
+  }
+  
+  /* Main Content Area */
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+  }
+  
+  /* Voice Bot Interface */
+  .voicebot-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: calc(100vh - 4rem); /* Account for header */
+    overflow: hidden;
+    border: 1px solid #000000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .voice-interface {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  /* Chat Section */
+  .chat-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #000000;
+  }
+  
+  #chatHistory {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message {
+    padding: 1rem 1.25rem;
+    border-radius: 0;
+    margin-bottom: 1rem;
+    max-width: 85%;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+  }
+  
+  .user-msg {
+    background-color: #000000;
+    color: #ffffff;
+    align-self: flex-end;
+  }
+  
+  .bot-msg {
+    background-color: #f0f0f0;
+    color: #000000;
+    align-self: flex-start;
+    border: 1px solid #000000;
+  }
+  
+  .message-time {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+    text-align: right;
+  }
+  
+  .input-area {
+    padding: 1rem;
+    border-top: 1px solid #000000;
+    background-color: #ffffff;
+  }
+  
+  .input-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  #userInput {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  #userInput:focus {
+    border-color: #000000;
+    box-shadow: 0 0 0 1px #000000;
+  }
+  
+  .action-button {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+  }
+  
+  .action-button:hover {
+    background-color: #333333;
+  }
+  
+  .action-button svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  #micButton {
+    position: relative;
+  }
+  
+  #micButton.listening {
+    background-color: #ff0000;
+  }
+  
+  .mic-wave {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #micButton.listening .mic-wave {
+    display: flex;
+  }
+  
+  .wave-bar {
+    width: 3px;
+    background-color: #ffffff;
+    height: 20%;
+    margin: 0 1px;
+    border-radius: 0;
+    animation: wave 1.5s infinite;
+  }
+  
+  @keyframes wave {
+    0%, 100% {
+      height: 20%;
+    }
+    50% {
+      height: 80%;
+    }
+  }
+  
+  #micStatus {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #000000;
+  }
+  
+  /* Form Section */
+  .form-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 1.5rem;
+  }
+  
+  .form-section h2 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #000000;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #000000;
+  }
+  
+  #formDisplayArea {
+    flex: 1;
+    border: 1px solid #000000;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+  
+  #grievanceFormFrame {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  #formStatus {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #000000;
+  }
+  
+  /* Voice Visualization */
+  .voice-visualization {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .viz-bar {
+    width: 4px;
+    height: 24px;
+    background-color: #000000;
+    transform-origin: bottom;
+    animation: visualize 0.5s infinite alternate;
+  }
+  
+  @keyframes visualize {
+    to {
+      transform: scaleY(0.2);
+    }
+  }
+  
+  .viz-bar:nth-child(1) { animation-delay: 0s; }
+  .viz-bar:nth-child(2) { animation-delay: 0.1s; }
+  .viz-bar:nth-child(3) { animation-delay: 0.2s; }
+  .viz-bar:nth-child(4) { animation-delay: 0.3s; }
+  .viz-bar:nth-child(5) { animation-delay: 0.4s; }
+  .viz-bar:nth-child(6) { animation-delay: 0.5s; }
+  
+  /* Custom Form Styling (for embedded forms) */
+  /* These styles will be applied to the iframe content if the iframe loads from the same origin */
+  #grievanceFormFrame {
+    background-color: #ffffff;
+  }
+  
+  /* Override styles for form elements inside the frame */
+  .form-override {
+    font-family: 'Inter', sans-serif !important;
+    background-color: #ffffff !important;
+  }
+  
+  .form-override .container {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 1.5rem !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  
+  .form-override h1 {
+    color: #000000 !important;
+    border-bottom: 1px solid #000000 !important;
+    padding-bottom: 0.75rem !important;
+    font-size: 1.5rem !important;
+  }
+  
+  .form-override .section h2 {
+    color: #000000 !important;
+    font-size: 1.25rem !important;
+  }
+  
+  .form-override label {
+    color: #000000 !important;
+  }
+  
+  .form-override input[type="text"],
+  .form-override input[type="email"],
+  .form-override input[type="tel"],
+  .form-override input[type="date"],
+  .form-override input[type="number"],
+  .form-override textarea,
+  .form-override select {
+    border: 1px solid #000000 !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  
+  .form-override button {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%) !important;
+  }
+  
+  .form-override button:hover {
+    background-color: #333333 !important;
+  }
+  
+  /* Analytics Dashboard */
+  .analytics-container {
+    padding: 2rem;
+  }
+  
+  .analytics-header {
+    margin-bottom: 2rem;
+  }
+  
+  .analytics-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 0.5rem;
+  }
+  
+  .analytics-header p {
+    color: #000000;
+  }
+  
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .dashboard-card {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    padding: 1.5rem;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+  }
+  
+  .dashboard-card h3 {
+    color: #000000;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #000000;
+  }
+  
+  .chart-container {
+    height: 200px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Scheme Navigator */
+  .scheme-navigator {
+    padding: 2rem;
+  }
+  
+  .scheme-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .scheme-card {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    padding: 1.5rem;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+    transition: transform 0.3s;
+  }
+  
+  .scheme-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .scheme-card h3 {
+    color: #000000;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .scheme-card p {
+    color: #000000;
+    margin-bottom: 1.5rem;
+  }
+  
+  .scheme-card a {
+    color: #000000;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .scheme-card a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Main Dashboard */
+  .main-dashboard {
+    padding: 3rem 2rem;
+  }
+  
+  .dashboard-welcome {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  
+  .dashboard-welcome h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 1rem;
+  }
+  
+  .dashboard-welcome p {
+    color: #000000;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+  
+  .dashboard-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    padding: 2rem;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+    transition: transform 0.3s;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .feature-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    border: 2px solid #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  
+  .feature-card h3 {
+    color: #000000;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-card p {
+    color: #000000;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-card a {
+    color: #000000;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .feature-card a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .voice-interface {
+      flex-direction: column;
+    }
+    
+    .chat-section,
+    .form-section {
+      width: 100%;
+    }
+    
+    .chat-section {
+      height: 50vh;
+      border-right: none;
+      border-bottom: 1px solid #000000;
+    }
+    
+    .dashboard-grid,
+    .scheme-list,
+    .dashboard-features {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .header-container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .dashboard-grid,
+    .scheme-list,
+    .dashboard-features {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Loading States */
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .loading-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .loading-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #000000;
+    border-radius: 50%;
+    animation: loadingDot 1.5s infinite;
+  }
+  
+  .loading-dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .loading-dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  @keyframes loadingDot {
+    0%, 100% {
+      transform: scale(0.5);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Print Styles */
+  @media print {
+    header,
+    .input-area,
+    .nav-links,
+    .action-button {
+      display: none !important;
+    }
+    
+    body,
+    .main-content,
+    .voicebot-container,
+    .voice-interface {
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
+    
+    .chat-section,
+    .form-section {
+      width: 100% !important;
+      page-break-after: always;
+    }
+    
+    .message {
+      border: 1px solid #000000 !important;
+      clip-path: none !important;
+    }
+  }
