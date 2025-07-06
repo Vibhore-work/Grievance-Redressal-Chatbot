@@ -2,7 +2,7 @@
 
 ---
 
-## 🚀 Key Features
+🚀 **Key Features**
 
 - **Multilingual AI Voicebot:** Supports Hindi, English, Tamil, Marathi, and Kannada.
 - **Context-Aware NLU:** Understands unstructured user input and accurately classifies intent.
