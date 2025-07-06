@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Simplified Gormint Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-200: #eeeeee;
+      --gray-300: #e0e0e0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--gray-50);
+      color: var(--black);
+      line-height: 1.5;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: var(--white);
+      border: 2px solid var(--black);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    h1 {
+      color: var(--black);
+      border-bottom: 2px solid var(--black);
+      padding: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    h1 svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    p.description {
+      padding: 1rem 1.5rem;
+      color: #555;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    
+    .section {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    
+    h2 {
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.25rem;
+    }
+    
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+    }
+    
+    .declaration-container {
+      padding: 1.5rem;
+    }
+    
+    .declaration-label {
+      display: inline-block;
+      margin-left: 0.5rem;
+      font-weight: normal;
+    }
+    
+    .button-container {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    button {
+      padding: 0.75rem 1.5rem;
+      background-color: var(--black);
+      color: var(--white);
+      border: 2px solid var(--black);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s ease;
+    }
+    
+    button:hover {
+      background-color: var(--white);
+      color: var(--black);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      Simplified Gormint Form
+    </h1>
+    
+    <p class="description">Please provide the following details.</p>
+    
+    <form id="govForm">
+      <div class="section">
+        <h2>Personal Information</h2>
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" autocomplete="name">
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" autocomplete="email">
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" autocomplete="tel">
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" autocomplete="bday">
+
+        <label for="city">Village/City/Town:</label>
+        <input type="text" id="city" name="city">
+      </div>
+
+      <div class="declaration-container">
+        <input type="checkbox" id="declaration" name="declaration">
+        <label for="declaration" class="declaration-label">
+          I hereby declare that the information provided is true to the best of my knowledge.
+        </label>
+      </div>
+
+      <div class="button-container">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Basic JS to prevent default form submission if needed for AJAX later
+    document.getElementById("govForm").addEventListener("submit", function(event) {
+        // If using Flask to handle POST directly, you might not need preventDefault
+        console.log('Form submitted (standard HTML submission)');
+        // If you were using AJAX (like in the original script.js):
+        // 1. event.preventDefault();
+        // 2. Gather form data.
+        // 3. Use fetch() to send data to '/submit'.
+        // 4. Handle response.
+    });
+  </script>
+  <script src="/static/form_script.js"></script>
+</body>
+</html>

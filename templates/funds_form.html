@@ -1,0 +1,210 @@
+<!-- funds_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Government Funds Grievance Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-200: #eeeeee;
+      --gray-300: #e0e0e0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--gray-50);
+      color: var(--black);
+      line-height: 1.5;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: var(--white);
+      border: 2px solid var(--black);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    h1 {
+      color: var(--black);
+      border-bottom: 2px solid var(--black);
+      padding: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    h1 svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .description {
+      padding: 1rem 1.5rem;
+      color: #555;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    
+    .section {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    
+    h2 {
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.25rem;
+    }
+    
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+    }
+    
+    input[type="file"] {
+      margin-bottom: 1rem;
+    }
+    
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .declaration-container {
+      padding: 1.5rem;
+    }
+    
+    .declaration-label {
+      display: inline-block;
+      margin-left: 0.5rem;
+      font-weight: normal;
+    }
+    
+    .button-container {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    button {
+      padding: 0.75rem 1.5rem;
+      background-color: var(--black);
+      color: var(--white);
+      border: 2px solid var(--black);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s ease;
+    }
+    
+    button:hover {
+      background-color: var(--white);
+      color: var(--black);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+      </svg>
+      Government Funds Grievance Form
+    </h1>
+    <p class="description">Use this form to report issues related to government schemes, financial aid, subsidies, or other fund-related concerns.</p>
+    
+    <form id="govForm">
+      <div class="section">
+        <h2>Personal Information</h2>
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" autocomplete="name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" autocomplete="tel" required>
+      </div>
+
+      <div class="section">
+        <h2>Fund Details</h2>
+        <label for="scheme_name">Name of Scheme/Program/Fund:</label>
+        <input type="text" id="scheme_name" name="scheme_name" required>
+
+        <label for="application_date">Date of Application:</label>
+        <input type="date" id="application_date" name="application_date" required>
+
+        <label for="amount_requested">Amount Requested/Expected (₹):</label>
+        <input type="number" id="amount_requested" name="amount_requested" min="0" step="0.01" required>
+
+        <label for="purpose">Purpose of Funds:</label>
+        <textarea id="purpose" name="purpose" required></textarea>
+
+        <label for="current_status">Current Status of Application/Disbursement:</label>
+        <select id="current_status" name="current_status" required>
+          <option value="">Select status...</option>
+          <option value="not_applied">Not yet applied</option>
+          <option value="application_submitted">Application submitted</option>
+          <option value="application_under_review">Application under review</option>
+          <option value="application_approved">Application approved but funds not received</option>
+          <option value="partial_funds">Partial funds received</option>
+          <option value="application_rejected">Application rejected</option>
+          <option value="other">Other</option>
+        </select>
+        
+        <label for="issue_details">Describe the Issue You're Facing:</label>
+        <textarea id="issue_details" name="issue_details" required></textarea>
+        
+        <label for="supporting_documents">Supporting Documents (Application receipts, approval letters, etc.):</label>
+        <input type="file" id="supporting_documents" name="supporting_documents" multiple>
+      </div>
+
+      <div class="declaration-container">
+        <input type="checkbox" id="declaration" name="declaration" required>
+        <label for="declaration" class="declaration-label">
+          I hereby declare that the information provided is true to the best of my knowledge.
+        </label>
+      </div>
+
+      <div class="button-container">
+        <button type="submit">Submit Grievance</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/static/form_script.js"></script>
+</body>
+</html>

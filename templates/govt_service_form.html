@@ -1,0 +1,248 @@
+<!-- govt_service_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Government Service Grievance Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-200: #eeeeee;
+      --gray-300: #e0e0e0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--gray-50);
+      color: var(--black);
+      line-height: 1.5;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: var(--white);
+      border: 2px solid var(--black);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    h1 {
+      color: var(--black);
+      border-bottom: 2px solid var(--black);
+      padding: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    h1 svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .description {
+      padding: 1rem 1.5rem;
+      color: #555;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    
+    .section {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    
+    h2 {
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.25rem;
+    }
+    
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+    }
+    
+    input[type="file"] {
+      margin-bottom: 1rem;
+    }
+    
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .service-types {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+    
+    #other_service_div {
+      margin-top: 1rem;
+    }
+    
+    .declaration-container {
+      padding: 1.5rem;
+    }
+    
+    .declaration-label {
+      display: inline-block;
+      margin-left: 0.5rem;
+      font-weight: normal;
+    }
+    
+    .button-container {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    button {
+      padding: 0.75rem 1.5rem;
+      background-color: var(--black);
+      color: var(--white);
+      border: 2px solid var(--black);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s ease;
+    }
+    
+    button:hover {
+      background-color: var(--white);
+      color: var(--black);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+      </svg>
+      Government Service Grievance Form
+    </h1>
+    <p class="description">Use this form to report issues with government services like ID cards, certificates, licenses, permits, or public services.</p>
+    
+    <form id="govForm">
+      <div class="section">
+        <h2>Personal Information</h2>
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" autocomplete="name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" autocomplete="tel" required>
+      </div>
+
+      <div class="section">
+        <h2>Service Details</h2>
+        <label for="service_type">Type of Service:</label>
+        <select id="service_type" name="service_type" required>
+          <option value="">Select service type...</option>
+          <option value="aadhar">Aadhaar Card</option>
+          <option value="pan">PAN Card</option>
+          <option value="voter_id">Voter ID</option>
+          <option value="passport">Passport</option>
+          <option value="driving_license">Driving License</option>
+          <option value="birth_certificate">Birth Certificate</option>
+          <option value="death_certificate">Death Certificate</option>
+          <option value="income_certificate">Income Certificate</option>
+          <option value="caste_certificate">Caste Certificate</option>
+          <option value="property_registration">Property Registration</option>
+          <option value="water_connection">Water Connection</option>
+          <option value="electricity_connection">Electricity Connection</option>
+          <option value="other">Other</option>
+        </select>
+        
+        <div id="other_service_div" style="display:none;">
+          <label for="other_service">Please specify the service:</label>
+          <input type="text" id="other_service" name="other_service">
+        </div>
+
+        <label for="application_number">Application/Reference Number (if any):</label>
+        <input type="text" id="application_number" name="application_number">
+
+        <label for="application_date">Date of Application:</label>
+        <input type="date" id="application_date" name="application_date">
+
+        <label for="issue_details">Describe the Issue You're Facing:</label>
+        <textarea id="issue_details" name="issue_details" required></textarea>
+        
+        <label for="prior_followup">Have you previously followed up on this issue?</label>
+        <select id="prior_followup" name="prior_followup" required>
+          <option value="">Select an option...</option>
+          <option value="no">No, this is my first complaint</option>
+          <option value="phone">Yes, via phone</option>
+          <option value="email">Yes, via email</option>
+          <option value="visit">Yes, via in-person visit</option>
+          <option value="multiple">Yes, multiple times through different channels</option>
+        </select>
+        
+        <label for="supporting_documents">Supporting Documents:</label>
+        <input type="file" id="supporting_documents" name="supporting_documents" multiple>
+      </div>
+
+      <div class="declaration-container">
+        <input type="checkbox" id="declaration" name="declaration" required>
+        <label for="declaration" class="declaration-label">
+          I hereby declare that the information provided is true to the best of my knowledge.
+        </label>
+      </div>
+
+      <div class="button-container">
+        <button type="submit">Submit Grievance</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Show "other" field if "Other" is selected in service type
+    document.getElementById('service_type').addEventListener('change', function() {
+      var otherDiv = document.getElementById('other_service_div');
+      if (this.value === 'other') {
+        otherDiv.style.display = 'block';
+        document.getElementById('other_service').required = true;
+      } else {
+        otherDiv.style.display = 'none';
+        document.getElementById('other_service').required = false;
+      }
+    });
+  </script>
+  <script src="/static/form_script.js"></script>
+</body>
+</html>

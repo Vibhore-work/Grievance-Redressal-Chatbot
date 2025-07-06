@@ -1,0 +1,201 @@
+<!-- infrastructure_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Infrastructure Grievance Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-200: #eeeeee;
+      --gray-300: #e0e0e0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--gray-50);
+      color: var(--black);
+      line-height: 1.5;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: var(--white);
+      border: 2px solid var(--black);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    h1 {
+      color: var(--black);
+      border-bottom: 2px solid var(--black);
+      padding: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    h1 svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .description {
+      padding: 1rem 1.5rem;
+      color: #555;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    
+    .section {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    
+    h2 {
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.25rem;
+    }
+    
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+    }
+    
+    input[type="file"] {
+      margin-bottom: 1rem;
+    }
+    
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .declaration-container {
+      padding: 1.5rem;
+    }
+    
+    .declaration-label {
+      display: inline-block;
+      margin-left: 0.5rem;
+      font-weight: normal;
+    }
+    
+    .button-container {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    button {
+      padding: 0.75rem 1.5rem;
+      background-color: var(--black);
+      color: var(--white);
+      border: 2px solid var(--black);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s ease;
+    }
+    
+    button:hover {
+      background-color: var(--white);
+      color: var(--black);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.28 4.93l-2.12-2.12c-.78-.78-2.05-.78-2.83 0L11.5 5.65l1.06 1.06L16.21 3l.94.94-9.76 9.76c-.26.26-.43.59-.5.94l-.58 2.35 2.35-.58c.34-.07.67-.24.94-.5l10.68-10.68c.78-.78.78-2.05 0-2.83zM6 15H4v-4H2V5h8v2H6v8z"/>
+      </svg>
+      Infrastructure Grievance Form
+    </h1>
+    <p class="description">Use this form to report issues related to roads, bridges, water supply, electricity, public buildings, or transportation.</p>
+    
+    <form id="govForm">
+      <div class="section">
+        <h2>Personal Information</h2>
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" autocomplete="name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" autocomplete="tel" required>
+
+        <label for="address">Complete Address:</label>
+        <textarea id="address" name="address" required></textarea>
+      </div>
+
+      <div class="section">
+        <h2>Issue Details</h2>
+        <label for="issue_description">Describe the infrastructure issue:</label>
+        <textarea id="issue_description" name="issue_description" required></textarea>
+
+        <label for="issue_location">Exact Location of the Issue:</label>
+        <input type="text" id="issue_location" name="issue_location" required>
+
+        <label for="issue_duration">How long has this issue existed?</label>
+        <select id="issue_duration" name="issue_duration" required>
+          <option value="">Select duration...</option>
+          <option value="less_than_week">Less than a week</option>
+          <option value="one_to_four_weeks">1-4 weeks</option>
+          <option value="one_to_six_months">1-6 months</option>
+          <option value="six_to_twelve_months">6-12 months</option>
+          <option value="more_than_year">More than a year</option>
+        </select>
+        
+        <label for="photo_evidence">Photo Evidence (optional):</label>
+        <input type="file" id="photo_evidence" name="photo_evidence" accept="image/*">
+      </div>
+
+      <div class="declaration-container">
+        <input type="checkbox" id="declaration" name="declaration" required>
+        <label for="declaration" class="declaration-label">
+          I hereby declare that the information provided is true to the best of my knowledge.
+        </label>
+      </div>
+
+      <div class="button-container">
+        <button type="submit">Submit Grievance</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/static/form_script.js"></script>
+</body>
+</html>
