@@ -1,0 +1,6 @@
+.env
+.venv/
+venv/
+.DS_Store
+debug_audio/
+tts_audio_files/
