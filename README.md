@@ -10,3 +10,13 @@
 - **Speech Recognition & Synthesis:** Integrates STT and TTS for seamless voice interaction.
 - **Automated Form Generation:** Extracts structured data and generates grievance forms automatically.
 - **Secure Data Handling:** Validates and stores grievance data as JSON for analysis and reporting.
+
+---
+
+💡 **Future Scope**
+
+- Integration with offline telephony services for low-bandwidth regions
+- Expansion to additional Indian languages
+- Collaboration with government platforms like MyScheme and CPGRAMS
+
+Built with ❤️ by Team Janvaani – IIT Madras
