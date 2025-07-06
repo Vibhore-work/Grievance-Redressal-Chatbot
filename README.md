@@ -18,5 +18,3 @@
 - Integration with offline telephony services for low-bandwidth regions
 - Expansion to additional Indian languages
 - Collaboration with government platforms like MyScheme and CPGRAMS
-
-Built with ❤️ by Team Janvaani – IIT Madras
